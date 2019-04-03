@@ -2,12 +2,8 @@
 
 Gruppe: 
 
- - G.G.Grobelkäse
-  
+ - Georg Giesbrecht
  - Moritz Jürgens
-  
- - Niggo Fürhaupt
-  
- - Moric Schrauber
-  
- - Tobias Essig
+ - Nicolas Fürhaupter
+ - Maurice Schramm
+ - Tobias Essigke
