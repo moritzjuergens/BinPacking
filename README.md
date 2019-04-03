@@ -18,4 +18,4 @@ Algorithmus
 - Sortierung der Objekte im Array --> absteigend
    - wir nehmen und den einfachsten Sortieralgorithmus
 - Anfang Algorithmus
-   - lökajsdföklj
+   - wir fangen an
