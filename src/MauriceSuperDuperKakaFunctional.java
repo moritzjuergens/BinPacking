@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class MauriceSuperDuperKakaFunctional {
@@ -28,19 +27,36 @@ public class MauriceSuperDuperKakaFunctional {
         bins.add(new Bin());
 
 
-
+        // is working but not adding any bins
         elements.stream()
                 .forEach(i -> bins.stream()
                         .filter(j -> j.getFreeSpace() >= i)
                         .findFirst()
                         .map(k -> {
-                            if (!k.addElement(i)){
+                            if (!k.addElement(i)) {
                                 bins.add(new Bin());
-                                bins.get(bins.size()-1).addElement(i);
+                                bins.get(bins.size() - 1).addElement(i);
                             }
                             return false;
                         })
                 );
+
+
+        /* Not working at all
+        elements.stream()
+                .forEach(i -> bins.stream()
+                        .filter(j -> {
+                            if (j.getFreeSpace() >= i) {
+                                j.addElement(i);
+                            } else {
+                                bins.add(new Bin());
+                            }
+                            return true;
+
+                        })
+                );
+
+         */
 
         bins.stream().forEach(i -> System.out.println("Restplatz im Bin: " + i.getFreeSpace()));
 
