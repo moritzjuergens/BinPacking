@@ -6,7 +6,8 @@ public class BinPackingSimple {
 
     public static void main(String[] args) {
 
-        int intNumberOfObject, intSizeOfObject,intObjectArray[],intCurrentBin,intSizeOfBin,intBinCounter;
+        int intNumberOfObject, intSizeOfObject, intObjectArray[], intCurrentBin, binSize, intBinCounter;
+
 
         List<Integer> intObjectList = new ArrayList<Integer>();
 
@@ -19,22 +20,37 @@ public class BinPackingSimple {
         intObjectList.add(2);
         intObjectList.add(1);
 
-        intCurrentBin = 0;
-
-        intBinCounter = 1;
-        intSizeOfBin = 10;
-
         Iterator<Integer> i = intObjectList.iterator();
 
-        while(i.hasNext()){
+        binSize = 10;
 
-            if(i.next()+intCurrentBin<intSizeOfBin) {
-                intCurrentBin = i.next()+intCurrentBin;
-                System.out.println(i);
-                System.out.println(intCurrentBin);
+        intBinCounter = 1;
+
+        intCurrentBin = 0;
+
+       // intObjectList.stream().forEach(z -);
+
+
+
+
+
+        /*
+        while (i.hasNext()){
+
+            if (binSize < (i.next() + intCurrentBin)) {
+
+                intBinCounter++;
+            }else{
+
+               ;
+
             }
-
+            System.out.println(intBinCounter);
         }
+        */
+
+
+
 
     }
 
