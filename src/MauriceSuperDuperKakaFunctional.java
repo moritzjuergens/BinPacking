@@ -9,7 +9,6 @@ public class MauriceSuperDuperKakaFunctional {
         List<Bin> bins = new ArrayList<Bin>();
 
         elements.add(3);
-
         elements.add(2);
         elements.add(3);
         elements.add(4);
@@ -24,73 +23,21 @@ public class MauriceSuperDuperKakaFunctional {
         elements.add(2);
 
 
-        bins.add(new Bin());
-
-
-        // is working but not adding any bins
         elements.stream()
-                .forEach(i -> bins.stream()
-                        .filter(j -> j.getFreeSpace() >= i)
+                .forEach(e -> bins
+                        .stream()
+                        .filter(b -> b.getFreeSpace() >= e)
                         .findFirst()
-                        .map(k -> {
-                            if (!k.addElement(i)) {
-                                bins.add(new Bin());
-                                bins.get(bins.size() - 1).addElement(i);
-                            }
-                            return false;
+                        .orElseGet(() -> {
+                            bins.add(new Bin());
+                            return bins.get(bins.size()-1);
                         })
+                        .addElement(e)
                 );
 
-
-        /* Not working at all
-        elements.stream()
-                .forEach(i -> bins.stream()
-                        .filter(j -> {
-                            if (j.getFreeSpace() >= i) {
-                                j.addElement(i);
-                            } else {
-                                bins.add(new Bin());
-                            }
-                            return true;
-
-                        })
-                );
-
-         */
-
-        bins.stream().forEach(i -> System.out.println("Restplatz im Bin: " + i.getFreeSpace()));
-
-/*
-
-
-        for (int element : elements){
-
-            boolean worked = false;
-
-            for (Bin bin : bins){
-
-                if (bin.addElement(element)){
-                    worked = true;
-                    break;
-                }
-
-            }
-
-            bins.stream().map(i -> i.addElement(element));
-            //bins.stream().forEach(i -> i.);
-
-            if (!worked) {
-                bins.add(new Bin());
-                bins.get(bins.size()-1).addElement(element);
-            }
-        }
 
         bins.stream().forEach(i -> System.out.println("Restplatz im Bin: " + i.getFreeSpace()));
 
 
-        System.out.println("Anzahl bins: " + bins.size());
-    }
-
- */
     }
 }

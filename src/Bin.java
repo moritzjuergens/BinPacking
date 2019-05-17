@@ -2,35 +2,6 @@ import java.util.ArrayList;
 
 public class Bin {
 
-    /*
-    private final int maxsize;
-    private int freeSpace;
-
-    public Bin(int maxsize, int freeSpace) {
-        this.maxsize = maxsize;
-        this.freeSpace = freeSpace;
-
-    }
-
-    public int getMaxsize() {
-        return maxsize;
-    }
-
-    public void setMaxsize(int maxsize) {
-        maxsize = 10;
-    }
-
-    public int getFreeSpace() {
-        return freeSpace;
-    }
-
-    public void setFreeSpace(int freeSpace) {
-        this.freeSpace = freeSpace;
-    }
-    */
-
-
-
     private static int MAXSIZE = 10;
     private int freeSpace;
     private ArrayList<Integer> elements = new ArrayList<Integer>();
@@ -67,7 +38,9 @@ public class Bin {
 
     private void setFreeSpace(int freeSpace){
         this.freeSpace = freeSpace;
+    }
 
-
+    public ArrayList<Integer> getElements() {
+        return this.elements;
     }
 }
