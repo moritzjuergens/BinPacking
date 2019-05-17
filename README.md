@@ -24,4 +24,3 @@ Algorithmus
     - größte zahl wird in int zischenvariable currentBin gespeichert
     - zahl, die aus dem array geholt wurde, wird im array mit 0 überspeichert oder aus der Arraylist gestrichen
 	
-// Test
