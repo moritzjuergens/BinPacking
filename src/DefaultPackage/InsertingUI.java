@@ -8,6 +8,9 @@ import java.awt.event.KeyEvent;
 
 public class InsertingUI extends JFrame {
 	
+	private static final long serialVersionUID = 1L;
+
+	@SuppressWarnings("unused")
 	private Worker worker;
 	
 	private JPanel inputPanel;

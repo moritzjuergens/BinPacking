@@ -4,15 +4,11 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
-
-import javafx.scene.layout.Border;
 
 public class StartingUI extends JFrame {
 	
-	private static final String ACTION_NORMAL = "NORMAL";
-	private static final String ACTION_FUNCTIONAL = "FUNCTIONAL";
+	private static final long serialVersionUID = 1L;
 	
 	private JPanel welcomePanel;
 	private JLabel lblWelcome1;
@@ -78,25 +74,26 @@ public class StartingUI extends JFrame {
 				String action = event.getActionCommand();
 				maxSize = Integer.parseInt(tfInput.getText());
 				
-				if (action.equals("ACTION_NORMAL")) {
+				if (Action.ACTION_NORMAL.name().equals(action)) {
 					worker = new WorkerNormal();
 					new InsertingUI(worker, maxSize);
-					
-				} else if (action.equals("ACTION_FUNCTIONAL")) {
+				} else if (Action.ACTION_FUNCTIONAL.name().equals(action)) {
 					worker = new WorkerFunctional();
 					new InsertingUI(worker, maxSize);
+				} else {
+					throw new IllegalArgumentException("No valid action is selected");
 				}
 				setVisible(false);
 			}
 		};
 		
 		btnNormal = new JButton("Normal");
-		btnNormal.setActionCommand("ACTION_NORMAL");
+		btnNormal.setActionCommand(Action.ACTION_NORMAL.name());
 		btnNormal.addActionListener(btnListener);
 		buttonPanel.add(btnNormal);
 		
 		btnFunctional = new JButton("Functional");
-		btnFunctional.setActionCommand("ACTION_FUNCTIONAL");
+		btnFunctional.setActionCommand(Action.ACTION_FUNCTIONAL.name());
 		btnFunctional.addActionListener(btnListener);
 		buttonPanel.add(btnFunctional);
 		
