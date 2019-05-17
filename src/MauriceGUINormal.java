@@ -16,7 +16,7 @@ public class MauriceGUINormal extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 
-
+//halla georg
         JPanel inputPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JPanel outputPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
