@@ -1,5 +1,6 @@
 /bin/
 
-.idea
+# User-specific stuff
+.idea/**/workspace.xml
 
 out
