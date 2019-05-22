@@ -1,16 +1,18 @@
 package DefaultPackage;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 public class StartingUI extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 
 	//Start of declaration
+	private JPanel mainPanel;
+
 	private JPanel welcomePanel;
 	private JLabel lblWelcome1;
 	private JLabel lblWelcome2;
@@ -34,6 +36,10 @@ public class StartingUI extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 
+        //Main panel to add all other panels on to
+        mainPanel = new JPanel();
+        mainPanel.setLayout(new BorderLayout());
+
         //Start of welcome panel
 		//Area of welcoming texts to the User
         welcomePanel = new JPanel();
@@ -51,7 +57,7 @@ public class StartingUI extends JFrame {
         lblWelcome3.setText("and press one of the buttons to continue.");
         welcomePanel.add(lblWelcome3, BorderLayout.SOUTH);
         
-        this.add(welcomePanel, BorderLayout.NORTH);
+        mainPanel.add(welcomePanel, BorderLayout.NORTH);
         //End of Welcome Panel
 
 
@@ -67,7 +73,7 @@ public class StartingUI extends JFrame {
         tfInput = new JTextField(5);
         inputPanel.add(tfInput);
 		
-        this.add(inputPanel, BorderLayout.CENTER);
+        mainPanel.add(inputPanel, BorderLayout.CENTER);
         //End of input panel
 
         //Start of button panel
@@ -108,8 +114,16 @@ public class StartingUI extends JFrame {
 		btnFunctional.addActionListener(btnListener);
 		buttonPanel.add(btnFunctional);
 		
-		this.add(buttonPanel, BorderLayout.SOUTH);
+		mainPanel.add(buttonPanel, BorderLayout.SOUTH);
         //End of button panel
+
+		//Create emptyBorder for gap between window edge and beginning of text
+		Border emptyBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
+
+		//Set the border to the mainPanel
+		mainPanel.setBorder(emptyBorder);
+
+		this.add(mainPanel);
 
 		this.pack();
 		this.setVisible(true);
