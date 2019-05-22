@@ -35,3 +35,71 @@ Außerdem haben wir uns, um ein möglichst gutes Ergebnis zu erzielen, auf eine 
 Unsere Entscheidung ist auf die First-Fit-Variante gefallen.
 
 ## Unsere Umsetzung
+### Action.java
+- Hier wird ein Enum zur späteren Verwendung im Code erstellt
+- Es wird dafür verwendet im UI entweder die Ausführung mit dem "herkömmlichen" oder funktionalen Code durchzuführen
+
+### Bin.java
+- Hier wird das Verhalten und die Eigenschaften des Behälters (Bin) beschrieben und festgelegt
+- Ein Behälter besitzt die Eigenschaft einer MaxSize, die die maximale Größe des Behälters angiebt
+    - Diese MaxSize wird in ihren Getter- und Setter-Methoden überprüft, dass auch nur valide Werte eingetragen werden können
+- Außerdem besitzt die Klasse noch Methoden, um Elemente in den Behälter hinzufügen zu können, den freien Platz im Behälter zu berechnen und zu schauen, ob ein Element in den Behälter hineinpasst
+
+### InsertingUI.java
+- Hier wird das User-Interface erstellt, in dem der Nutzer die Elemente dem Behälter hinzufügen kann
+- Da wir die online-Variante gewählt haben, können immer weiter Elemente den Behältern hinzugefügt werden
+- Die erstellen Behäter werden mit ihren enthaltenen Elementen gespeichert und angezeigt
+
+### Main.java
+- Erstellt das StartingUI als Einstieg in das Programm
+
+### StartingUI.java
+- Erstellt den Willkommens-Screen am Anfang des Programms
+- Nimmt die maximale Größe eines Behälters als Benutzereingabe entgegen
+- Der Benutzer kann dann entscheiden, ob die Ausführung "herkömmlich" oder funktional geschehen soll
+
+### Worker.java
+- Beinhaltet ein Interface, dass den Worker-Klassen vorgibt, welche Methoden implementiert werden müssen
+- Die Worker beihnhalten den eigentlichen Algorithmus des BinPacking-Problems
+
+### WorkerFunctional.java
+- Definiert den Worker bzw. den BinPacking-Algorithmus in der funktionalen Variante
+
+- insertElement()
+    - die Behälter werden in einem Stream weitergegeben
+    - es wird nach den Behältern gefiltert, die noch Platz für das übergebene Element haben
+    - es wird der erste Behälter von den gefilterten Behältern genommen
+    - wenn es keine Behälter gibt, in die das Element passt, wird ein neuer Behälter erstellt
+    - zum Schluss wird das Element dem ersten Behälter, in den das Element hineinpasst, oder dem neuen Behälter hinzugefügt
+    
+- getDisplayData()
+    - die Behälter werden in einem Stream weitergegeben
+    - mit einer forEach-Schleife werden die Behälter durchgegangen und für das UI in einem zweidimensionalen Array zur Darstellung aufbereitet
+    - die erste Dimension des Arrays enthält die Nummer des Behälter
+    - die zweite Dimension des Arrays entählt die eingefügten Elemente
+    
+- getElements()
+    - es wird ein StringJoiner erstellt, der die Elemente als String mit einem Komma getrennt nacheinander darstellt
+    - dies wird dadurch erreicht, dass alle Elemente des Behälters in einem Stream weitergegeben werden und mit einre forEach-Schleife darüber iteriert wird
+    
+### WorkerNormal.java
+- Definiert den Worker bzw. den BinPacking-Algorithmus in der "herkömmlichen" Variante
+
+- insertElement()
+    - es wird geprüft, ob das Element valide ist (größer 0 und kleiner-gleich maxSize des Behälters)
+    - eine boolean Variable wird erstellt, um den Erfolg des Einfügens zu kennzeichnen
+    - es wird mit einer forEach-Schleife über die Behälter iteriert
+        - die Bedingung einer Verzweigung versucht, das Element in den Bin hinzuzufügen
+        - falls es erfolgreich ist, wird die Schleife abgebrochen
+    - wenn es keinen Erfolg beim Hinzufügen gab, wird ein neuer Bin erstellt und das Element hinzugefügt
+    
+- getDisplayData()
+    - mit einer for-Schleife werden die Behälter durchgegangen und für das UI in einem zweidimensionalen Array zur Darstellung aufbereitet
+    - die erste Dimension des Arrays enthält die Nummer des Behälter
+    - die zweite Dimension des Arrays entählt die eingefügten Elemente
+    
+- getElements()
+    - es wird ein StringJoiner erstellt, der die Elemente als String mit einem Komma getrennt nacheinander darstellt
+    - im Folgenden wird mit einer forEach-Schleife jedes Element eines Bins durchgegangen und dem StringJoiner übergeben
+
+
