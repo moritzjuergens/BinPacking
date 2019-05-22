@@ -6,13 +6,13 @@ import java.util.StringJoiner;
 
 public class WorkerNormal implements Worker {
 
-	private static List<Bin> bins = new ArrayList<Bin>();
+    private static List<Bin> bins = new ArrayList<Bin>();
 
-	//Method to insert an Element into the bins
-	public void insertElement(int element) {
-	    //validate the element -> must be bigger than zero and smaller than maxsize of the bins)
-    	Bin.validateElement(element);
-    	//declare a boolean and initialize it with false
+    //Method to insert an Element into the bins
+    public void insertElement(int element) {
+        //validate the element -> must be bigger than zero and smaller than maxsize of the bins)
+        Bin.validateElement(element);
+        //declare a boolean and initialize it with false
         boolean success = false;
         //Loop through all of the bins
         for (Bin bin : bins) {
@@ -32,36 +32,64 @@ public class WorkerNormal implements Worker {
         }
     }
 
+    public String getNumberOfElements(){
+        int  quantity = 0;
+
+        for (Bin bin: bins) {
+            quantity += bin.getElements().size();
+        }
+
+        return String.valueOf(quantity);
+    }
+
+
     //Method to return all the data to display later
     public String[][] getDisplayData() {
-	    //Declare a String array with two dimensions
+        //Declare a String array with two dimensions
         //The first dimensions is as big as the number of bins
         //The second dimensions only has two places; one for the number of the current bin and the second one for all of the elements
-        String[][] data = new String[bins.size()][2];
+        String[][] data = new String[bins.size()][3];
 
         //Loop through all bins to add them into the array
         for (int i = 0; i < bins.size(); i++) {
             //Add the number of the current bin
             data[i][0] = String.valueOf(i + 1);
+            //Add the quantity of elements of the current bin
+            data[i][1] = String.valueOf(bins.get(i).getElements().size());
             //Add all the elements the current bin has as String -> see the Method itself
-            data[i][1] = getElements(bins.get(i));
+            data[i][2] = getElements(bins.get(i));
         }
         //return the array
-    	return data;
+        return data;
     }
 
     //Method to get a string with all elements
-	private static String getElements(Bin bin) {
-	    //Declare a StringJoiner
+    private static String getElements(Bin bin) {
+        //Declare a StringJoiner
         //This StringJoiner will stick all Strings we give him together and he will separate them with ", "
-		StringJoiner stringJoiner = new StringJoiner(", ");
+        StringJoiner stringJoiner = new StringJoiner(", ");
 
-		//Loop through all Elements and add them
+        //Loop through all Elements and add them
         for (int element: bin.getElements()) {
-        	stringJoiner.add(String.valueOf(element));
+            stringJoiner.add(String.valueOf(element));
         }
 
-		return stringJoiner.toString();
-	}
-	
+        return stringJoiner.toString();
+    }
+
+    //Generates an ArrayList with all the index of bins which are full
+    public ArrayList<Integer> getBinIndexOfFullBins() {
+
+        ArrayList<Integer> binIndexOfFullBins = new ArrayList();
+
+        //Iterates over all Bins
+        for (Bin bin: bins) {
+            //Tests if the free Space is zero
+            if (bin.calculateFreeSpace() == 0) {
+                //if so: add the index of this bin to the ArrayList
+                binIndexOfFullBins.add(bins.indexOf(bin));
+            }
+        }
+        return binIndexOfFullBins;
+    }
 }
