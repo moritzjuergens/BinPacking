@@ -34,7 +34,23 @@ Nach ausgiebiger Überlegung, haben wir uns entschieden die „Online“  Varian
 Außerdem haben wir uns, um ein möglichst gutes Ergebnis zu erzielen, auf eine der drei oben genannten Möglichkeiten festgelegt. 
 Unsere Entscheidung ist auf die First-Fit-Variante gefallen.
 
+## Benutzeroberfläche
+### Start Screen
+- Heißt den Benutzer willkommen
+- Stellt dem Benutzer ein Eingabefeld zur Verfügung, um die MaxSize der Behälter festzulegen
+- Der Benutzer kann nun wählen, ob er zur Ausführung den herkömmlichen "normalen" Code oder den funktionalen Code benutzen möchte
+    
+### Bin Sorting
+- Lässt den Benutzer mit Eingabe von Zahlen und dem Drücken des "Insert element"-Buttons oder dem Drücken der Enter-Taste Elemente einfügen
+- Nun gibt die Ausgabe an
+    - wie viele Elemente bereits eingefügt wurden
+    - welche Behälter aufgemacht wurden
+    - wie viele Elemente sich in den Behältern befinden
+    - welche Elemente sich in den Behältern befinden
+- Wenn ein Behälter die maxSize erreicht hat, wird diese Zeile rot unterlegt
+
 ## Unsere Umsetzung
+    
 ### Action.java
 - Hier wird ein Enum zur späteren Verwendung im Code erstellt
 - Es wird dafür verwendet im UI entweder die Ausführung mit dem "herkömmlichen" oder funktionalen Code durchzuführen
@@ -89,9 +105,9 @@ Unsere Entscheidung ist auf die First-Fit-Variante gefallen.
     - es wird geprüft, ob das Element valide ist (größer 0 und kleiner-gleich maxSize des Behälters)
     - eine boolean Variable wird erstellt, um den Erfolg des Einfügens zu kennzeichnen
     - es wird mit einer forEach-Schleife über die Behälter iteriert
-        - die Bedingung einer Verzweigung versucht, das Element in den Bin hinzuzufügen
+        - die Bedingung einer Verzweigung versucht, das Element in den Behälter hinzuzufügen
         - falls es erfolgreich ist, wird die Schleife abgebrochen
-    - wenn es keinen Erfolg beim Hinzufügen gab, wird ein neuer Bin erstellt und das Element hinzugefügt
+    - wenn es keinen Erfolg beim Hinzufügen gab, wird ein neuer Behälter erstellt und das Element hinzugefügt
     
 - getDisplayData()
     - mit einer for-Schleife werden die Behälter durchgegangen und für das UI in einem zweidimensionalen Array zur Darstellung aufbereitet
@@ -100,6 +116,6 @@ Unsere Entscheidung ist auf die First-Fit-Variante gefallen.
     
 - getElements()
     - es wird ein StringJoiner erstellt, der die Elemente als String mit einem Komma getrennt nacheinander darstellt
-    - im Folgenden wird mit einer forEach-Schleife jedes Element eines Bins durchgegangen und dem StringJoiner übergeben
-
+    - im Folgenden wird mit einer forEach-Schleife jedes Element eines Behälters durchgegangen und dem StringJoiner übergeben
+    
 

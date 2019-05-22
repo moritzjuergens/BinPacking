@@ -27,7 +27,7 @@ public class InsertingUI extends JFrame {
 	//End of Declaration
 
 	public InsertingUI(Worker worker, int maxSize) {
-		super("Bin sorting");
+		super("Bin Sorting");
 
 		//Initialize the eorker
 		this.worker = worker;
